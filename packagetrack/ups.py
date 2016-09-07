@@ -68,12 +68,10 @@ class UPSInterface(object):
         # Check status code?
 
         # Parse delivery date, status, and last update.
+        try:
         est_delivery_date = datetime.strptime(
-            try:
-                root['Shipment']['ScheduledDeliveryDate'],
-                "%Y%m%d")
-            except Exception, e:
-                print e
+            root['Shipment']['ScheduledDeliveryDate'],
+            "%Y%m%d")
 
         package = root['Shipment']['Package']
         activity = package['Activity']
